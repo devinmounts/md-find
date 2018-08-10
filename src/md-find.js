@@ -1,9 +1,9 @@
 export class ApiCall {
   getConditions() {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/conditions?user_key=process.env.exports.apiKey`;
-      request.onload = () => {
+      let url = `https://api.betterdoctor.com/2016-03-01/conditions?user_key=aa7477a0d4f91163676fe6011b764ae2`;
+      request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
         } else {

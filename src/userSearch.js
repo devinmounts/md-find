@@ -1,6 +1,6 @@
 export class Search(){
-  constructor(illness){
-    this.illness = illness;
+  constructor(condition){
+    this.condition = condition;
   }
-  
+
 }

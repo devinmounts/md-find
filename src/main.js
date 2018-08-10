@@ -10,7 +10,11 @@ $(document).ready(() => {
 
   promise.then((response) => {
     let body = JSON.parse(response);
-    console.log(body);
+    console.log(body.data[0].name);
+
+    for(let i=0; i<body.data.length; i++) {
+      $('#conditionsDropdown').append(`<option>${body.data[i].name}</option>`);
+    }
 
   });
 });
