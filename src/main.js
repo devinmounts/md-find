@@ -23,14 +23,13 @@ $(document).ready(() => {
     event.preventDefault();
     const query = $('#conditionsDropdown').find(':selected').text();
 
-    const promiseQuery = search.getDoctors(query);
+    const promiseQuery = search.getDoctorsByCondition(query);
 
     promiseQuery.then(function(response) {
       const body = JSON.parse(response);
       const docArray = [];
       for(let i=0; i<body.data.length; i++){
         const docObject = {};
-        console.log(docObject);
         const firstName = body.data[i].profile.first_name;
         const lastName = body.data[i].profile.last_name;
         const title = body.data[i].profile.title;
@@ -67,7 +66,9 @@ $(document).ready(() => {
         console.log(docObject);
         docArray.push(docObject);
       }
-      console.log(docArray);
+      docArray.forEach((doctor)=>{
+        $(".show-md").append(`<h4><li>${doctor.firstName} ${doctor.lastName}, ${doctor.title}</h4><ul><li>Accepting Patients: ${doctor.acceptsNewPatient}</li><li>Address: ${doctor.street}. ${doctor.city}, ${doctor.state}. ${doctor.zip}</li><li>Phone: ${doctor.phone}</li><li>Site: ${doctor.website}</li></ul>`);
+      })
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
