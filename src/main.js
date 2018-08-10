@@ -5,15 +5,28 @@ import './styles.css';
 import { ApiCall } from './md-find.js';
 
 $(document).ready(() => {
-  let search = new ApiCall();
-  let promiseConditions = search.getConditions();
+  const search = new ApiCall();
+  const promiseConditions = search.getConditions();
 
   promiseConditions.then((response) => {
-    let body = JSON.parse(response);
+    const body = JSON.parse(response);
 
     for(let i=0; i<body.data.length; i++) {
-      $('#conditionsDropdown').append(`<option>${body.data[i].name}</option>`);
-    }
-
+      const condition = body.data[i].name;
+      $('#conditionsDropdown').append(`<option>${condition}</option>`);
+    }}, function(error) {
+        $('.showErrors').text(`There was an error processing your request: ${error.message}`);
   });
+  //
+  // $('#conditions-form').submit(function(event){
+  //   event.preventDefault();
+  //   const query = $('#conditionsDropdown').find(':selected').text();
+  //
+  //   const promiseQuery = search.getDoctors(query);
+  //
+  //   promiseQuery.then((response) => {
+  //     const body = JSON.parse(response);
+  //     console.log(body);
+  //   });
+  // });
 });

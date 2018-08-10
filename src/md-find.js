@@ -9,7 +9,7 @@ export class ApiCall {
         } else {
           reject(Error(request.statusText));
         }
-      }
+      };
       request.open("GET", url, true);
       request.send();
     });
@@ -25,7 +25,7 @@ export class ApiCall {
         } else {
           reject(Error(request.statusText));
         }
-      }
+      };
       request.open("GET", url, true);
       request.send();
     });
