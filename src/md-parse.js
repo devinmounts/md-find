@@ -22,14 +22,14 @@ export class UserSearch{
   }
 
 
-  $('#conditions-form').submit(function(event){
-    event.preventDefault();
-    $(".show-md").empty();
+  // $('#conditions-form').submit(function(event){
+  //   event.preventDefault();
+  //   $(".show-md").empty();
+  //
+  //   const query = $('#conditionsDropdown').find(':selected').text();
+  // const promiseQuery = search.getDoctorsByCondition(query);
 
-    const query = $('#conditionsDropdown').find(':selected').text();
-
-    const promiseQuery = search.getDoctorsByCondition(query);
-
+  parseConditionsQuery(){
     promiseQuery.then(function(response) {
       const body = JSON.parse(response);
       const docArray = [];
@@ -69,27 +69,14 @@ export class UserSearch{
           }
         }
         docArray.push(docObject);
-        console.log(docArray);
       }
-      docArray.forEach((doctor)=>{
-        if (!(docArray.length === 0)) {
-          $(".show-md").append(`<h4><li>${doctor.firstName} ${doctor.lastName}, ${doctor.title}</h4><ul><li>Accepting Patients: ${doctor.acceptsNewPatient}</li><li>Address: ${doctor.street}. ${doctor.city}, ${doctor.state}. ${doctor.zip}</li><li>Phone: ${doctor.phone}</li><li>Site: ${doctor.website}</li></ul>`);
-        } else {
-          $(".show-md h4").text(`No doctors matched your search`);
-        }
+      return docArray;
       });
     }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-    });
-  });
+      return `There was an error processing your request: ${error.message}`;
+  }
 
-  $('#name-form').submit(function(event){
-    event.preventDefault();
-    $(".show-md").empty();
-    const inputtedName = $("#inputtedName").val();
-
-    const promiseName = search.getDoctorsByName(inputtedName);
-
+  parseDoctorNameQuery(){
     promiseName.then(function(response) {
       const body = JSON.parse(response);
       const docArray = [];
@@ -128,19 +115,11 @@ export class UserSearch{
             }
           }
         }
-        console.log(docObject);
         docArray.push(docObject);
-        console.log(docArray);
       }
-      docArray.forEach((doctor)=>{
-        if (!(docArray.length === 0)) {
-          $(".show-md").append(`<h4><li>${doctor.firstName} ${doctor.lastName}, ${doctor.title}</h4><ul><li>Accepting Patients: ${doctor.acceptsNewPatient}</li><li>Address: ${doctor.street}. ${doctor.city}, ${doctor.state}. ${doctor.zip}</li><li>Phone: ${doctor.phone}</li><li>Site: ${doctor.website}</li></ul>`);
-        } else {
-          $(".show-md").text(`<h4>No doctors matched your search</h4>`);
-        }
-      });
+      return docArray;
     }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-    });
-  });
+      return `There was an error processing your request: ${error.message}`;
+  }
+
 }
