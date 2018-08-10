@@ -1,21 +1,26 @@
 import { ApiCall } from './md-calls.js';
 
-export class ApiParse{
+export class UserSearch{
 
-  
-  const search = new ApiCall();
-  const promiseConditions = search.getConditions();
 
-  promiseConditions.then((response) => {
-    const body = JSON.parse(response);
+  // const search = new ApiCall();
+  // const promiseConditions = search.getConditions();
 
-    for(let i=0; i<body.data.length; i++) {
-      const condition = body.data[i].name;
-      $('#conditionsDropdown').append(`<option>${condition}</option>`);
-    }
-  }, function(error) {
-    $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-  });
+  parseConditions() {
+    promiseConditions.then((response) => {
+      const conditions = [];
+      const body = JSON.parse(response);
+
+      for(let i=0; i<body.data.length; i++) {
+        const condition = body.data[i].name;
+        conditions.push(condition);
+      }
+    }, function(error) {
+      return `There was an error processing your request: ${error.message}`
+    });
+    return conditions;
+  }
+
 
   $('#conditions-form').submit(function(event){
     event.preventDefault();
