@@ -6,11 +6,10 @@ import { ApiCall } from './md-find.js';
 
 $(document).ready(() => {
   let search = new ApiCall();
-  let promise = search.getConditions();
+  let promiseConditions = search.getConditions();
 
-  promise.then((response) => {
+  promiseConditions.then((response) => {
     let body = JSON.parse(response);
-    console.log(body.data[0].name);
 
     for(let i=0; i<body.data.length; i++) {
       $('#conditionsDropdown').append(`<option>${body.data[i].name}</option>`);
