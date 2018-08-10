@@ -15,7 +15,7 @@ export class ApiCall {
     });
   }
 
-  getDocByName(name) {
+  getDoctorsByName(name) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
       let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=45.5122%2C-122.6587%2C10&user_location=45.5122%2C-122.6587&sort=full-name-asc&skip=0&limit=10&user_key=aa7477a0d4f91163676fe6011b764ae2`;

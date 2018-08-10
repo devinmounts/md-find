@@ -22,7 +22,7 @@ $(document).ready(() => {
   $('#conditions-form').submit(function(event){
     event.preventDefault();
     $(".show-md").empty();
-    
+
     const query = $('#conditionsDropdown').find(':selected').text();
 
     const promiseQuery = search.getDoctorsByCondition(query);
@@ -72,7 +72,7 @@ $(document).ready(() => {
         if (!(docArray.length === 0)) {
           $(".show-md").append(`<h4><li>${doctor.firstName} ${doctor.lastName}, ${doctor.title}</h4><ul><li>Accepting Patients: ${doctor.acceptsNewPatient}</li><li>Address: ${doctor.street}. ${doctor.city}, ${doctor.state}. ${doctor.zip}</li><li>Phone: ${doctor.phone}</li><li>Site: ${doctor.website}</li></ul>`);
         } else {
-          $(".show-md").text(`<h4>No doctors matched your search</h4>`);
+          $(".show-md h4").text(`No doctors matched your search`);
         }
       });
     }, function(error) {
