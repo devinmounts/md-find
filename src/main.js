@@ -67,7 +67,11 @@ $(document).ready(() => {
         docArray.push(docObject);
       }
       docArray.forEach((doctor)=>{
-        $(".show-md").append(`<h4><li>${doctor.firstName} ${doctor.lastName}, ${doctor.title}</h4><ul><li>Accepting Patients: ${doctor.acceptsNewPatient}</li><li>Address: ${doctor.street}. ${doctor.city}, ${doctor.state}. ${doctor.zip}</li><li>Phone: ${doctor.phone}</li><li>Site: ${doctor.website}</li></ul>`);
+        if (!docArray.length === 0) {
+          $(".show-md").append(`<h4><li>${doctor.firstName} ${doctor.lastName}, ${doctor.title}</h4><ul><li>Accepting Patients: ${doctor.acceptsNewPatient}</li><li>Address: ${doctor.street}. ${doctor.city}, ${doctor.state}. ${doctor.zip}</li><li>Phone: ${doctor.phone}</li><li>Site: ${doctor.website}</li></ul>`);
+        } else {
+          $(".show-md").text(`<h4>No doctors matched your search</h4>`)
+        }
       })
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
