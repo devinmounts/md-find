@@ -2,17 +2,19 @@
 
 #### Epicodus JavaScript wk2 Independent Project, 08/10/2018
 
-#### By Your Name Here
+#### By Devin Mounts
 
-## Description
+## A web application that allows users to query the database based on an illness and receive a list of MD's in Portland who specialize in search.
 
-Add description here
 
 ## Specs
 
 | Behavior | Input | Output |
 |----------|-------|--------|
-| Behavior | input | output |
+| Program receives a search criteria (illness), and returns a list of MD's in PDX who specialize in illness | plantar fasciitis | MD1, MD2, MD3... |
+| If MD's are returned from search, program will show first name, last name, address, phone, website, and whether the MD is accepting new patients. | plantar fasciitis | MD1: Francisca, Geurrera, 222 1st. St. Portland, OR., 503-544-3322, www.fgmd.com, Accepting New Patients; MD2:... MD3:...;... |
+| Program returns an error message for bad API call | plantar fasciitis | Error: 404. Bad Url |
+| If no MD's meet search criteria, program returns notification.| plantar fasciitis | I'm sorry, it appears there are no MD's who specialize in plantar fisciitis in Portland |
 
 ## Setup on OSX
 
@@ -51,4 +53,4 @@ Add description here
 
 This software is licensed under the MIT license.
 
-Copyright (c) 2018 **Your Name Here**
+Copyright (c) 2018 **Devin Mounts**
