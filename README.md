@@ -26,6 +26,7 @@
 * Install Node.js
 * Install karma-cli globally: `npm install -g karma-cli`
 * Clone the repo
+* Create a file in the root directory called `.env` with your API key written in this format: **exports.apiKey** = **_API KEY HERE_**
 * `npm install` to install dependencies
 * `npm run start` to build and start the dev server
 * `npm run lint` to explicitly run ESLint
