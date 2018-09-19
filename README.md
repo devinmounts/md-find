@@ -4,7 +4,10 @@
 
 #### By Devin Mounts
 
-## A web application that allows users to query the database based on an illness and receive a list of MD's in Portland who specialize in search.
+## Splash
+![Welcome Page](./src/splash.png)
+
+## A web application that allows users to query the "Better Doctor API" by  illness, or name and receive a list of MD's in Portland who specialize in search.
 
 
 ## Specs
@@ -49,7 +52,7 @@
 
 ## Links
 
-* Add links here
+* Repo: https://github.com/devinmounts/md-find
 
 ## License
 
